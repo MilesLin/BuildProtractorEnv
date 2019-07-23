@@ -1,4 +1,4 @@
-﻿## 建立 Protractor 開發環境
+﻿## 建立 Protractor 5.4.2 開發環境
 步驟 1: 建立 `package.json`
 
 * `npm init`
