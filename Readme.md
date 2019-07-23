@@ -1,21 +1,25 @@
 ﻿## 建立 Protractor 開發環境
-步驟 1 建立 `package.json`
+步驟 1: 建立 `package.json`
 
-`npm init`
+* `npm init`
 
-步驟 2 安裝 local protractor
+步驟 2: 安裝 local protractor
 
-`npm install protractor --save-dev`
+* `npm install protractor --save-dev`
 
-步驟 3 安裝 local web driver
+步驟 3: 安裝 local web driver
 
-`package.json 加入 script => "wdmupdate": "webdriver-manager update"`
+* `package.json 加入新 script => "wdmupdate": "webdriver-manager update"`
 
-`執行指令 npm run wdmupdate`
+``` json
+"scripts": {
+    "wdmupdate": "webdriver-manager update"
+  },
+```
 
-步驟 4 新增測試檔案 todo-e2e-spec.js
+* `執行指令 npm run wdmupdate`
 
-`todo-e2e-spec.js`
+步驟 4: 新增測試檔案 `todo-e2e-spec.js`
 ``` js
 describe('angularjs homepage todo list', function() {
     it('should add a todo', function() {
@@ -36,37 +40,36 @@ describe('angularjs homepage todo list', function() {
   });
 ```
 
-步驟 5 新增 `protractor.conf.js` (protractor 設定檔案)
+步驟 5: 新增 `protractor.conf.js` (protractor 設定檔案)
 ``` js
 exports.config = {
-	specs: ['todo-e2e-spec.js'],
+    specs: ['todo-e2e-spec.js'],
     directConnect: true
 };
 ```
 
-步驟 6 執行 protractor
+步驟 6: 執行 protractor 啟動測試
 
-`package.json 加入 script => "protractor": "protractor"`
+* `package.json 加入新 script => "protractor": "protractor"`
 
-`執行指令 npm run protractor -- protractor.conf.js`
+``` json
+"scripts": {
+    "protractor": "protractor",
+    "wdmupdate": "webdriver-manager update"
+  },
+```
+
+* `執行指令 npm run protractor -- protractor.conf.js`
 
 
 ## 設定 typescript 環境
 
-步驟 1 安裝 `ts-node` 與 `typescript`
+步驟 1: 安裝 `ts-node` 與 `typescript`
 
-`npm install ts-node --save-dev`
+* `npm install ts-node --save-dev`
+* `npm install typescript --save-dev`
 
-`npm install typescript --save-dev`
-
-
-改成 typescript 版本
-require('ts-node').register({
-      project: require('path').join(__dirname, './tsconfig.e2e.json')
-    });
-
-步驟 2 加入 `typescript.json`
-
+步驟 2: 加入 typescript 設定檔 `typescript.json`
 ``` json
 {
     "compileOnSave": false,
@@ -91,18 +94,15 @@ require('ts-node').register({
   
 ```
 
-步驟 3 安裝 @type
+步驟 3: 安裝測試用的 typescript 定義檔案
+* `npm install @types/jasmine --save-dev`
+* `npm install @types/jasminewd2 --save-dev`
+* `npm install @types/node --save-dev`
 
-`npm install @types/jasmine --save-dev`
+步驟 4: 在 `protractor.conf.js` 加入使用 typescript 的設定
+* 加入 onPrepare 的設定，讓 protractor 能夠讀取 typescript。
+* 讀取檔案的 **specs** 改成讀取 `todo-e2e-spec.ts`
 
-`npm install @types/jasminewd2 --save-dev`
-
-`npm install @types/node --save-dev`
-
-步驟 4 在 `protracto.conf.js` 加入使用 ts 設定
-
-加入 onPrepare 的設定
-讀取檔案改成讀取 todo-e2e-spec.ts
 ``` js
 exports.config = {
     specs: ['todo-e2e-spec.ts'],
@@ -115,10 +115,9 @@ exports.config = {
 };
 ```
 
-步驟 5 將測試檔案改成 ts 版本
-改名: todo-e2e-spec.ts
-修改程式碼成 ts 版本
-
+步驟 5 將測試檔案 `todo-e2e-spec.js` 改成 ts 版本
+* 更改檔案名稱: `todo-e2e-spec.ts`
+* 修改程式碼成 typescript 版本 *(只有多 `import { browser, by, element } from 'protractor';` 這一行)*
 ``` ts
 import { browser, by, element } from 'protractor';
 
@@ -141,5 +140,8 @@ describe('angularjs homepage todo list', function() {
   });
 ```
 步驟 6 執行測試
+* `npm run protractor -- protractor.conf.js`
 
-`npm run protractor -- protractor.conf.js`
+
+## 延伸閱讀
+[Protractor](https://https://www.protractortest.org/#/)
