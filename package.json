@@ -10,7 +10,13 @@
   },
   "author": "",
   "license": "ISC",
-  "dependencies": {
-    "protractor": "^5.4.2"
+  "dependencies": {},
+  "devDependencies": {
+    "@types/jasmine": "^3.3.15",
+    "@types/jasminewd2": "^2.0.6",
+    "@types/node": "^12.6.8",
+    "protractor": "^5.4.2",
+    "ts-node": "^8.3.0",
+    "typescript": "^3.5.3"
   }
 }
