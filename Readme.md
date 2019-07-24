@@ -115,7 +115,7 @@ exports.config = {
 };
 ```
 
-步驟 5 將測試檔案 `todo.e2e-spec.js` 改成 `ts` 版本
+步驟 5: 將測試檔案 `todo.e2e-spec.js` 改成 `ts` 版本
 * 更改檔案名稱: `todo.e2e-spec.ts`
 * 修改程式碼成 typescript 版本 *(只有多 `import { browser, by, element } from 'protractor';` 這一行)*
 ``` ts
@@ -139,8 +139,35 @@ describe('angularjs homepage todo list', function() {
     });
   });
 ```
-步驟 6 執行測試
+步驟 6: 執行測試
 * `npm run protractor -- protractor.conf.js`
+
+## 啟用 VS Code 偵錯模式
+
+**CAUTION: VS Code 偵錯模式只能在 Disabled Control Flow 的情況下偵錯。 請參考 [Debugging Protractor Tests](https://www.protractortest.org/#/debugging)。**
+
+步驟 1: 建立 `.vscode` 資料夾
+* 使用 cmd 指令 `mkdir .vscode`，建立 `.vscode` 資料夾
+
+步驟 2: 於 `.vscode` 資料夾加入 `launch.json`
+``` json
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "type": "node",
+            "request": "launch",
+            "name": "Debug E2E",
+            "program": "${workspaceRoot}/node_modules/protractor/bin/protractor",
+            "args": ["${workspaceRoot}/protractor.conf.js"]
+        }
+    ]
+}
+```
+
+步驟 3: 使用 VS Code 開始偵錯
+* 執行偵錯的方法，請參考 https://code.visualstudio.com/docs/editor/debugging
+
 
 
 ## 延伸閱讀
