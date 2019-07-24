@@ -1,5 +1,5 @@
 exports.config = {
-    specs: ['todo-e2e-spec.ts'],
+    specs: ['./src/**/*.e2e-spec.ts'],
     directConnect: true,
     onPrepare: () => {
         require('ts-node').register({
