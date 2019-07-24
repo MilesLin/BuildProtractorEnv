@@ -19,7 +19,7 @@
 
 * `執行指令 npm run wdmupdate`
 
-步驟 4: 新增測試檔案 `todo-e2e-spec.js`
+步驟 4: 新增 `src` 資料夾，並新增測試檔案 `todo.e2e-spec.js` 到 `src` 資料夾
 ``` js
 describe('angularjs homepage todo list', function() {
     it('should add a todo', function() {
@@ -43,7 +43,7 @@ describe('angularjs homepage todo list', function() {
 步驟 5: 新增 `protractor.conf.js` (protractor 設定檔案)
 ``` js
 exports.config = {
-    specs: ['todo-e2e-spec.js'],
+    specs: ['./src/**/*.e2e-spec.js'],
     directConnect: true
 };
 ```
@@ -101,11 +101,11 @@ exports.config = {
 
 步驟 4: 在 `protractor.conf.js` 加入使用 typescript 的設定
 * 加入 onPrepare 的設定，讓 protractor 能夠讀取 typescript。
-* 讀取檔案的 **specs** 改成讀取 `todo-e2e-spec.ts`
+* 讀取檔案的 **specs** 改成讀取 `.ts` 的測試
 
 ``` js
 exports.config = {
-    specs: ['todo-e2e-spec.ts'],
+    specs: ['./src/**/*.e2e-spec.ts'],
     directConnect: true,
     onPrepare: () => {
         require('ts-node').register({
@@ -115,8 +115,8 @@ exports.config = {
 };
 ```
 
-步驟 5 將測試檔案 `todo-e2e-spec.js` 改成 ts 版本
-* 更改檔案名稱: `todo-e2e-spec.ts`
+步驟 5 將測試檔案 `todo.e2e-spec.js` 改成 `ts` 版本
+* 更改檔案名稱: `todo.e2e-spec.ts`
 * 修改程式碼成 typescript 版本 *(只有多 `import { browser, by, element } from 'protractor';` 這一行)*
 ``` ts
 import { browser, by, element } from 'protractor';
