@@ -5,7 +5,7 @@
 
 步驟 2: 安裝 local protractor
 
-* `npm install protractor --save-dev`
+* `npm install protractor@5.4 --save-dev`
 
 步驟 3: 安裝 local web driver
 
@@ -66,38 +66,38 @@ exports.config = {
 
 步驟 1: 安裝 `ts-node` 與 `typescript`
 
-* `npm install ts-node --save-dev`
-* `npm install typescript --save-dev`
+* `npm install ts-node@8.3 --save-dev`
+* `npm install typescript@3.5 --save-dev`
 
-步驟 2: 加入 typescript 設定檔 `typescript.json`
+步驟 2: 加入 typescript 設定檔 `tsconfig.json`
 ``` json
 {
-    "compileOnSave": false,
-    "compilerOptions": {
-      "baseUrl": "./",
-      "outDir": "./dist/out-tsc",
-      "sourceMap": true,
-      "declaration": false,
-      "moduleResolution": "node",
-      "emitDecoratorMetadata": true,
-      "experimentalDecorators": true,
-      "target": "es5",
-      "typeRoots": [
-        "node_modules/@types"
-      ],
-      "lib": [
-        "es2017",
-        "dom"
-      ]
-    }
+  "compileOnSave": false,
+  "compilerOptions": {
+    "baseUrl": "./",
+    "outDir": "./dist/out-tsc",
+    "sourceMap": true,
+    "declaration": false,
+    "moduleResolution": "node",
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "target": "es5",
+    "typeRoots": [
+      "node_modules/@types"
+    ],
+    "lib": [
+      "es2017",
+      "dom"
+    ]
   }
+}
   
 ```
 
 步驟 3: 安裝測試用的 typescript 定義檔案
-* `npm install @types/jasmine --save-dev`
-* `npm install @types/jasminewd2 --save-dev`
-* `npm install @types/node --save-dev`
+* `npm install @types/jasmine@3.3 --save-dev`
+* `npm install @types/jasminewd2@2.0 --save-dev`
+* `npm install @types/node@12.6 --save-dev`
 
 步驟 4: 在 `protractor.conf.js` 加入使用 typescript 的設定
 * 加入 onPrepare 的設定，讓 protractor 能夠讀取 typescript。
